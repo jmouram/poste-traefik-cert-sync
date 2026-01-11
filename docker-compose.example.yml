@@ -19,7 +19,7 @@ services:
     image: analogic/poste.io:latest
     container_name: poste
     restart: unless-stopped
-    hostname: mail.hubbr.org
+    hostname: mail.example.com
     environment:
       - HTTPS=OFF
     volumes:
@@ -33,7 +33,7 @@ services:
       - "993:993"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.poste.rule=Host(`mail.hubbr.org`)"
+      - "traefik.http.routers.poste.rule=Host(`mail.example.com`)"
       - "traefik.http.routers.poste.entrypoints=websecure"
       - "traefik.http.routers.poste.tls.certresolver=letsencrypt"
       - "traefik.http.services.poste.loadbalancer.server.port=80"
